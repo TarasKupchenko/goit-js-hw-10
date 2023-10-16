@@ -23,7 +23,6 @@ fetchBreeds()
     Notiflix.Notify.Failure("Oops! Something went wrong! Try reloading the page!");
   });
 
-
 breedSelect.addEventListener("change", () => {
   const selectedBreedId = breedSelect.value;
   loader.style.display = "block"; 
