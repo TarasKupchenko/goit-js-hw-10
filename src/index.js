@@ -1,17 +1,7 @@
 // Додайте цей код в файл index.js
-import axios from "axios";
-
-axios.defaults.headers.common["x-api-key"] = "live_TWSNzcXXshd2wTlx8wGZmTOAPuw0U7qAOkoVyaq40AXWXmhZ2AgSxAzpuz2uAlxb";
 import SlimSelect from 'slim-select';
 import Notiflix from "notiflix";
-export const fetchBreeds = () => {
-   return axios.get("https://api.thecatapi.com/v1/breeds");
- };
-
- export const fetchCatByBreed = (breedId) => {
-   const url = `https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`;
-   return axios.get(url);
- };
+import { fetchBreeds, fetchCatByBreed } from "./cat-api.js";
 
 const breedSelect = document.querySelector(".breed-select");
 const catInfo = document.querySelector(".cat-info");
