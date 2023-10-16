@@ -1,4 +1,4 @@
-// Додайте цей код в файл index.js
+
 import SlimSelect from 'slim-select';
 import Notiflix from "notiflix";
 import { fetchBreeds, fetchCatByBreed } from "./cat-api.js";
@@ -23,7 +23,7 @@ fetchBreeds()
     Notiflix.Notify.Failure("Oops! Something went wrong! Try reloading the page!");
   });
 
-// Додати обробку вибору породи та виклик fetchCatByBreed
+
 breedSelect.addEventListener("change", () => {
   const selectedBreedId = breedSelect.value;
   loader.style.display = "block"; // Показуємо завантажувач під час запиту
