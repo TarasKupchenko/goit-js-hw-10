@@ -26,12 +26,12 @@ fetchBreeds()
 
 breedSelect.addEventListener("change", () => {
   const selectedBreedId = breedSelect.value;
-  loader.style.display = "block"; // Показуємо завантажувач під час запиту
+  loader.style.display = "block"; 
   error.style.display = "none";
   fetchCatByBreed(selectedBreedId)
     .then((response) => {
-      // Отримали дані про кішку, відображаємо їх
-      const catData = response.data[0]; // Беремо перший об'єкт, може бути більше одного, в залежності від запиту
+     
+      const catData = response.data[0]; 
       catInfo.innerHTML = `<img src="${catData.url}" alt="Cat Image">
                            <div style="max-width: 500px">
                            <p style="font-size: 32px; color: blue;">${catData.breeds[0].name}</p>
@@ -41,10 +41,10 @@ breedSelect.addEventListener("change", () => {
     })
     .catch((error) => {
       console.error("Помилка при запиті інформації про кота", error);
-      error.style.display = "block"; // Виводимо повідомлення про помилку
+      error.style.display = "block"; 
     })
     .finally(() => {
-      loader.style.display = "none"; // Приховуємо завантажувач після завершення запиту
+      loader.style.display = "none"; 
     });
 });
 
