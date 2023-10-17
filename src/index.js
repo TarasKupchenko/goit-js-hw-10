@@ -5,18 +5,14 @@ const catInfo = document.querySelector('.cat-info');
 const loader = document.querySelector('.loader');
 const error = document.querySelector('.error');
 
-// Показуємо лоадер при завантаженні сторінки
 loader.style.display = 'block';
 
-// Приховуємо селект при завантаженні сторінки
 breedSelect.style.display = 'none';
 
 function showError(errorMessage) {
   error.textContent = errorMessage;
   error.style.display = 'block';
 }
-
-// Функція для приховування блоку з інформацією про породу
 function hideCatInfo() {
   catInfo.style.display = 'none';
 }
@@ -30,24 +26,19 @@ fetchBreeds()
       option.textContent = breed.name;
       breedSelect.appendChild(option);
     });
-    // Приховуємо лоадер після завантаження даних
     loader.style.display = 'none';
-    // Показуємо селект після завантаження
+   
     breedSelect.style.display = 'block';
   })
   .catch((error) => {
     console.error('Помилка при завантаженні списку порід', error);
-    // Виводимо повідомлення про помилку на сторінці
     showError('Oops! Something went wrong! Try reloading the page!');
-    // Приховуємо лоадер у випадку помилки
     loader.style.display = 'none';
   });
 
 breedSelect.addEventListener('change', () => {
   loader.style.display = 'block';
-  hideCatInfo(); // Приховуємо блок інформації про попередню породу
-  error.style.display = 'none'; // Приховуємо повідомлення про помилку
-
+  hideCatInfo();
   const selectedBreedId = breedSelect.value;
 
   fetchCatByBreed(selectedBreedId)
@@ -57,8 +48,8 @@ breedSelect.addEventListener('change', () => {
                                 <div style="max-width: 500px">
                                 <p style="font-size: 32px; color: blue;">${catData.breeds[0].name}</p>
                                 <p> <span style="font-weight: 700;">Description: </span>${catData.breeds[0].description}</p>
-                               <p><span style="font-weight: 700;">Temperament: </span>${catData.breeds[0].temperament}</p>`;
-      // Показуємо блок інформації про нову породу
+                               <p><span style="font-weight: 700;">Temperament: </span>${catData.breeds[0].temperament}</p>
+                                </div>`
       catInfo.style.display = 'flex';
     })
     .catch((error) => {
