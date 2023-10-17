@@ -48,8 +48,8 @@ breedSelect.addEventListener('change', () => {
   hideCatInfo(); // Приховуємо блок інформації про попередню породу
 
   const selectedBreedId = breedSelect.value;
-
-  fetchCatByBreed(selectedBreedId)
+// Оновлений код обробника події
+fetchCatByBreed(selectedBreedId)
   .then((response) => {
     const catData = response.data[0];
 
@@ -62,14 +62,14 @@ breedSelect.addEventListener('change', () => {
         <p> <span style="font-weight: 700;">Description: </span>${catData.breeds[0].description}</p>
         <p><span style="font-weight: 700;">Temperament: </span>${catData.breeds[0].temperament}</p>
         </div>`;
-
-      // Приховуємо помилку у разі успішного завершення запиту
-      hideError();
     } else {
       // Помилка: порода або URL відсутні
       hideCatInfo();
-      //showError('Oops! The selected breed has no image URL.');
+      showError('Oops! The selected breed has no image URL.');
     }
+
+    // Приховати помилку про загальну помилку (якщо вона вже була відображена)
+    hideError();
   })
   .catch((error) => {
     console.error('Помилка при запиті інформації про кота', error);
