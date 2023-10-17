@@ -16,7 +16,9 @@ function showError(errorMessage) {
 function hideCatInfo() {
   catInfo.style.display = 'none';
 }
-
+function hideCatInfo() {
+  catInfo.style.display = 'none';
+}
 fetchBreeds()
   .then((response) => {
     const breeds = response.data;
