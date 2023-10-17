@@ -48,35 +48,25 @@ breedSelect.addEventListener('change', () => {
   hideCatInfo(); // Приховуємо блок інформації про попередню породу
 
   const selectedBreedId = breedSelect.value;
-// Оновлений код обробника події
-fetchCatByBreed(selectedBreedId)
-  .then((response) => {
-    const catData = response.data[0];
 
-    if (catData && catData.url) {
-      // Відображення інформації про породу
-      showElement(catInfo);
+  fetchCatByBreed(selectedBreedId)
+    .then((response) => {
+      const catData = response.data[0];
       catInfo.innerHTML = `<img src="${catData.url}" alt="Cat Image">
-        <div style="max-width: 500px">
-        <p style="font-size: 32px; color: blue;">${catData.breeds[0].name}</p>
-        <p> <span style="font-weight: 700;">Description: </span>${catData.breeds[0].description}</p>
-        <p><span style="font-weight: 700;">Temperament: </span>${catData.breeds[0].temperament}</p>
-        </div>`;
-    } else {
-      // Помилка: порода або URL відсутні
+                                <div style="max-width: 500px">
+                                <p style="font-size: 32px; color: blue;">${catData.breeds[0].name}</p>
+                                <p> <span style="font-weight: 700;">Description: </span>${catData.breeds[0].description}</p>
+                               <p><span style="font-weight: 700;">Temperament: </span>${catData.breeds[0].temperament}</p>
+                                </div>`;
+      // Показуємо блок інформації про нову породу
+      catInfo.style.display = 'flex';
+    })
+    .catch((error) => {
+      console.error('Помилка при запиті інформації про кота', error);
+      showError('Oops! The selected breed was not found. Please try again.');
       hideCatInfo();
-      showError('Oops! The selected breed has no image URL.');
-    }
-
-    // Приховати помилку про загальну помилку (якщо вона вже була відображена)
-    hideError();
-  })
-  .catch((error) => {
-    console.error('Помилка при запиті інформації про кота', error);
-    hideCatInfo();
-    showError('Oops! Something went wrong. Please try again.');
-  })
-  .finally(() => {
-    loader.style.display = 'none';
-  });
+    })
+    .finally(() => {
+      loader.style.display = 'none';
+    });
 });

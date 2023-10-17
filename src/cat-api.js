@@ -10,4 +10,3 @@ export const fetchCatByBreed = (breedId) => {
   const url = `https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`;
   return axios.get(url);
 };
-
