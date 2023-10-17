@@ -46,6 +46,7 @@ fetchBreeds()
 breedSelect.addEventListener('change', () => {
   loader.style.display = 'block';
   hideCatInfo(); // Приховуємо блок інформації про попередню породу
+  error.style.display = 'none'; // Приховуємо повідомлення про помилку
 
   const selectedBreedId = breedSelect.value;
 
@@ -56,8 +57,7 @@ breedSelect.addEventListener('change', () => {
                                 <div style="max-width: 500px">
                                 <p style="font-size: 32px; color: blue;">${catData.breeds[0].name}</p>
                                 <p> <span style="font-weight: 700;">Description: </span>${catData.breeds[0].description}</p>
-                               <p><span style="font-weight: 700;">Temperament: </span>${catData.breeds[0].temperament}</p>
-                                </div>`;
+                               <p><span style="font-weight: 700;">Temperament: </span>${catData.breeds[0].temperament}</p>`;
       // Показуємо блок інформації про нову породу
       catInfo.style.display = 'flex';
     })
