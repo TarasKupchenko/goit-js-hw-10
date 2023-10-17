@@ -13,12 +13,7 @@ function showError(errorMessage) {
   error.textContent = errorMessage;
   error.style.display = 'block';
 }
-function hideCatInfo() {
-  catInfo.style.display = 'none';
-}
-function hideCatInfo() {
-  catInfo.style.display = 'none';
-}
+
 fetchBreeds()
   .then((response) => {
     const breeds = response.data;
