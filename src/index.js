@@ -68,7 +68,7 @@ breedSelect.addEventListener('change', () => {
     } else {
       // Помилка: порода або URL відсутні
       hideCatInfo();
-      showError('Oops! The selected breed has no image URL.');
+      //showError('Oops! The selected breed has no image URL.');
     }
   })
   .catch((error) => {
