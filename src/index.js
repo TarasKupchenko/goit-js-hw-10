@@ -5,7 +5,6 @@ const catInfo = document.querySelector('.cat-info');
 const loader = document.querySelector('.loader');
 const error = document.querySelector('.error');
 
-// Приховуємо селект при завантаженні сторінки
 breedSelect.style.display = 'none';
 
 function showError(errorMessage) {
